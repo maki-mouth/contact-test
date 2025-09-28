@@ -1,0 +1,83 @@
+/* ------------------------------------- */
+/* 登録ページ固有のスタイル (.register-page-container) */
+/* ------------------------------------- */
+.register-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.page-title {
+    /* Registerの文字のスタイル */
+    font-size: 28px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.form-card {
+    /* フォーム全体を囲む白いカード部分 */
+    width: 90%;
+    max-width: 450px;
+    background-color: #fff;
+    padding: 35px 40px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* フォーム要素 */
+.register-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    /* 下線のみの入力フィールド */
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* 登録ボタン */
+.form-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.register-button {
+    /* 画像の茶色がかったボタンの色 */
+    background-color: #8b7d7b;
+    color: white;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.register-button:hover {
+    background-color: #6a5e5c;
+}
