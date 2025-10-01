@@ -1,0 +1,84 @@
+/* ベーススタイルとリセット */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    /* フォントは適宜変更してください */
+    background-color: #ffffff;
+    /* ほぼ白の背景 */
+    color: #333333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* 背景の文字がはみ出てもスクロールバーを出さないため */
+}
+
+/* コンテナ設定 */
+.thank-you-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 巨大な背景装飾テキスト */
+.thank-you-bg {
+    position: absolute;
+    font-size: 20vw;
+    /* ビューポート幅に対する相対的なサイズで巨大化 */
+    font-weight: bold;
+    color: rgba(220, 215, 210, 0.6);
+    /* 薄いトープ/オフホワイトの色で透過 */
+    user-select: none;
+    /* テキスト選択を無効化 */
+    pointer-events: none;
+    /* マウスイベントを無効化し、下のボタンに触れるようにする */
+    white-space: nowrap;
+    /* テキストが折り返さないように */
+    line-height: 1;
+    /* 行の高さを調整 */
+}
+
+/* 中央のメッセージとボタンを内包するボックス */
+.content-box {
+    z-index: 10;
+    /* 背景テキストの上に配置 */
+    text-align: center;
+    padding: 20px;
+}
+
+/* 完了メッセージ */
+.message-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #5d5a57;
+    /* 画像に近い落ち着いた色 */
+}
+
+/* HOMEボタン */
+.home-button {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #968c83;
+    /* 画像のボタンに近いトープ/茶色がかったグレー */
+    color: #ffffff;
+    /* 白い文字 */
+    text-decoration: none;
+    /* 下線を消す */
+    border: none;
+    border-radius: 3px;
+    /* 角を少し丸める */
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: background-color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #7a736a;
+    /* ホバー時の色変化 */
+}

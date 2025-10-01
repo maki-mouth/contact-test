@@ -8,4 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'category_id',
+        'first_name',
+        'last_name',
+        'gender',
+        'email',
+        'tel',
+        'address',
+        'building',
+        'inquiry_type',
+        'content',
+    ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
 }

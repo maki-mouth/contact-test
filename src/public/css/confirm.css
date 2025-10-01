@@ -1,0 +1,196 @@
+.confirm__content {
+margin: 0 auto;
+padding: 30px 15px 80px;
+max-width: 1230px;
+}
+
+.confirm__heading {
+margin-bottom: 50px;
+text-align: center;
+/* Contact画面と統一の茶色 */
+color: #a08c79;
+font-size: 30px;
+font-weight: 700;
+}
+
+.form {
+margin: 0 auto;
+/* フォームエリアの固定幅（画像に合わせて調整） */
+width: 700px;
+/* フォーム背景色（暖かみのある白） */
+background-color: #ffffff;
+padding: 0;
+border-radius: 8px;
+}
+
+/* ----------------------------------- */
+/* 2. 確認テーブルのスタイル (画像デザインの核となる部分) */
+/* ----------------------------------- */
+
+.confirm-table {
+width: 100%;
+/* テーブル全体を囲む外枠のボーダー */
+border: 1px solid #e0d9d3;
+border-collapse: collapse;
+margin-bottom: 0;
+/* 外枠に角丸を適用し、コンテンツがはみ出さないようにする */
+border-radius: 8px;
+overflow: hidden;
+}
+
+.confirm-table__inner {
+width: 100%;
+table-layout: fixed;
+}
+
+/* 各行の区切り線 */
+.confirm-table__row {
+border-bottom: 1px solid #e0d9d3;
+}
+
+/* 最終行の下線を削除 */
+.confirm-table__inner .confirm-table__row:last-child {
+border-bottom: none;
+}
+
+/* ヘッダー（項目名）のスタイル - 画像のメインデザイン */
+.confirm-table__header {
+width: 35%;
+padding: 15px 20px;
+text-align: left;
+font-weight: normal;
+font-size: 16px;
+/* 画像のヘッダー背景色（茶色がかったベージュ） */
+background-color: #d8c3b1;
+/* 画像のヘッダー文字色（濃い茶色） */
+color: #4a413c;
+}
+
+/* データ（入力値）のスタイル */
+.confirm-table__text {
+width: 65%;
+padding: 15px 20px;
+text-align: left;
+/* データ部分の背景はフォームの背景色（白）を継承 */
+background-color: #ffffff;
+font-size: 16px;
+color: #333333;
+vertical-align: top;
+}
+
+/* 確認値（表示テキスト）の基本スタイル */
+.confirm-value {
+display: block;
+word-break: break-all;
+}
+
+/* お問い合わせ内容など複数行対応の要素 */
+.confirm-value-multiline {
+display: block;
+white-space: pre-wrap;
+/* 改行を反映 */
+}
+
+
+/* ----------------------------------- */
+/* 3. ボタンのスタイル */
+/* ----------------------------------- */
+
+.form__button {
+text-align: center;
+margin-top: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 30px;
+}
+
+/* 送信ボタン（画像では濃い茶色） */
+.form__button-submit {
+padding: 10px 20px;
+width: 100px;
+height: 40px;
+border: none;
+border-radius: 5px;
+background: #6e6459;
+/* 画像の濃い茶色 */
+color: #fff;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.form__button-submit:hover {
+background: #4a413c;
+}
+
+/* 修正ボタン（画像では背景透明/文字濃いグレー） */
+.form__button-back {
+padding: 10px 20px;
+width: 100px;
+height: 40px;
+color: #6e6459;
+/* 送信ボタンと同じ系統の茶色 */
+border: none;
+background-color: transparent;
+text-decoration: underline;
+/* 画像に合わせて下線を追加 */
+font-size: 16px;
+font-weight: normal;
+cursor: pointer;
+}
+
+.form__button-back:hover {
+color: #4a413c;
+}
+
+
+/* ----------------------------------- */
+/* 4. レスポンシブ対応 */
+/* ----------------------------------- */
+
+@media (max-width: 768px) {
+.form {
+    width: 100%;
+}
+
+.confirm__heading {
+    font-size: 24px;
+}
+
+.confirm-table__header,
+.confirm-table__text {
+    padding: 12px 15px;
+    font-size: 14px;
+    display: block;
+    /* スマホではヘッダーとテキストを縦に積み重ねる */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ヘッダーは縦に積んだ時も色を維持 */
+.confirm-table__header {
+    border-bottom: none;
+}
+
+/* テキスト部分には区切り線を残す */
+.confirm-table__text {
+    border-bottom: 1px solid #e0d9d3;
+}
+
+.confirm-table__inner .confirm-table__row:last-child .confirm-table__text {
+    border-bottom: none;
+    /* 最終行の下線は不要 */
+}
+
+.form__button {
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form__button-submit,
+.form__button-back {
+    width: 100%;
+    max-width: 200px;
+}

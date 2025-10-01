@@ -9,7 +9,21 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view('register');
+        return view('index');
     }
 
+    public function confirm()
+    {
+        return view('confirm');
+    }
+
+    public function register()
+    {
+        return view('/register');
+    }
+
+    public function thanks()
+    {
+        return view('thanks');
+    }
 }

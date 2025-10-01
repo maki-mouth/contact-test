@@ -7,23 +7,17 @@
     <title>contact-test</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @yield('css')
 </head>
+
 <body>
-    
-    {{-- 共通ヘッダー: LogoとLoginボタン --}}
-    <header class="common-header">
-        <div class="header-content">
-            <h1 class="logo">FashionablyLate</h1>
-            
-            {{-- loginボタン --}}
-            <a href="/login" class="login-button">login</a>
-        </div>
+    <header class="header">
+        <h1 class="header__logo">FashionablyLate</h1>
     </header>
 
-    {{-- 各ページ固有のコンテンツがここに挿入されます --}}
-    <main>
+    <main class="main">
         @yield('content')
     </main>
 
-</body>
+    </body>
 </html>
