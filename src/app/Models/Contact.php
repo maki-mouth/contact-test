@@ -19,8 +19,9 @@ class Contact extends Model
         'address',
         'building',
         'inquiry_type',
-        'content',
+        'detail',
     ];
+
 
     public function category()
     {
