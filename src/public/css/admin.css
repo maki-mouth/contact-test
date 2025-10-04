@@ -1,0 +1,414 @@
+/* カラーパレットとカスタムプロパティ */
+:root {
+    --color-beige-light: #f7f3f1;
+    /* ページ背景の明るいベージュ */
+    --color-text-input-border: #d4cfcc;
+    /* 入力欄の薄い枠線 */
+    --color-button-search: #8b7468;
+    /* 「検索」ボタンの濃い茶色 */
+    --color-button-reset: #fdfdfd;
+    /* 「リセット」ボタンの白背景 */
+    --color-table-header-bg: #8b7468;
+    /* テーブルヘッダーの濃い茶色 */
+    --color-table-header-text: #fdfdfd;
+    /* テーブルヘッダーの白文字 */
+    --color-detail-button-bg: #fdfdfd;
+    --color-detail-button-text: #c0b4ae;
+    /* 「詳細」「logout」の薄い色 */
+    --color-export-button: #444;
+    --max-content-width: 960px;
+    /* フォームとテーブルの最大幅 (約5xl) */
+}
+
+/* ____________________
+   グローバル・基本設定
+   ____________________ */
+
+body {
+    background-color: var(--color-beige-light);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #444;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+
+
+.admin-title {
+    font-size: 1.5rem;
+    /* 2xl相当 */
+    color: #333;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+/* ____________________
+   検索・フィルタリングエリア
+   ____________________ */
+
+.filter-area {
+    display: flex;
+    flex-wrap: wrap;
+    /* 小さな画面で折り返す */
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: flex-start;
+    /* 左寄せ */
+}
+
+.text-input,
+.dropdown-input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-text-input-border);
+    border-radius: 3px;
+    background-color: #fdfdfd;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* 各入力欄の幅指定 */
+.input-name-email {
+    width: 280px;
+}
+
+.input-gender {
+    width: 120px;
+}
+
+.input-type {
+    width: 180px;
+}
+
+.input-date {
+    width: 120px;
+    color: #999;
+    /* プレースホルダー色 */
+    appearance: none;
+    /* ドロップダウン矢印を非表示に */
+}
+
+.input-date:focus {
+    color: #444;
+}
+
+.dropdown-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b7468'%3e%3cpath d='M7 10l5 5 5-5H7z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.2em;
+    cursor: pointer;
+}
+
+.search-button {
+    background-color: var(--color-button-search);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.reset-button {
+    background-color: var(--color-button-reset);
+    color: var(--color-detail-button-text);
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--color-detail-button-text);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* ____________________
+   データ表示エリア
+   ____________________ */
+
+.data-area-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.export-button {
+    color: var(--color-export-button);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+}
+
+/* ____________________
+   テーブルスタイル
+   ____________________ */
+
+.contact-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+    background-color: var(--color-table-header-bg);
+    color: var(--color-table-header-text);
+}
+
+.contact-table th,
+.contact-table td {
+    padding: 0.75rem 0.75rem;
+    text-align: left;
+}
+
+.table-header th {
+    font-weight: normal;
+    padding: 1rem 0.75rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-header th:first-child {
+    border-top-left-radius: 5px;
+}
+
+.table-header th:last-child {
+    border-top-right-radius: 5px;
+    border-right: none;
+}
+
+.table-row {
+    background-color: #fdfdfd;
+    border-bottom: 1px solid #eee;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+/* 詳細ボタンのセル */
+.col-detail {
+    width: 100px;
+    /* 詳細ボタンの列幅を固定 */
+    text-align: center;
+}
+
+.detail-button {
+    background-color: var(--color-detail-button-bg);
+    color: var(--color-detail-button-text);
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--color-detail-button-text);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+/* 「Showing 1 to 7 of 35 results」のような情報表示を非表示にする */
+.data-area .text-sm.text-gray-700.leading-5 {
+    display: none !important;
+}
+
+/* ____________________
+   ページネーションのカスタムCSS (admin.css)
+   ____________________ */
+
+/* 1. ページネーション全体 (ul.pagination) のリセット */
+/* Bootstrapは ul タグに .pagination をつけます */
+.pagination {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 0;
+    /* ページ間の間隔をなくす */
+    border: 1px solid #d4cfcc;
+    /* 全体を囲む薄い枠線 */
+    border-radius: 3px;
+    /* 角丸 */
+}
+
+/* 2. 個々のアイテム (li.page-item) のマージンリセット */
+/* Bootstrapが li につけるマージンなどをリセット */
+.page-item {
+    margin: 0;
+    /* ページの区切り線は li ではなく a/span に適用します */
+}
+
+/* 3. リンク/番号 (a.page-link, span.page-link) のスタイル */
+.page-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    /* サイズ調整 */
+    font-size: 0.875rem;
+    color: #999;
+    /* 通常時の文字色 */
+    background-color: #fdfdfd;
+    /* 通常時の背景色 */
+    text-decoration: none;
+
+    /* 縦の区切り線 */
+    border-right: 1px solid #d4cfcc;
+
+    /* Bootstrapのデフォルトスタイルを上書き */
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* 4. 最後の区切り線を削除 */
+.pagination .page-item:last-child .page-link {
+    border-right: none;
+}
+
+/* 5. アクティブなページ (li.active) のスタイル */
+.page-item.active .page-link {
+    background-color: #8b7468 !important;
+    /* 画像で要求されている濃い茶色 */
+    color: white !important;
+    font-weight: normal;
+    border-color: #8b7468 !important;
+    /* 枠線の色も濃い茶色に */
+    z-index: 1;
+}
+
+/* 6. ホバー時のスタイル（任意） */
+.page-link:hover {
+    background-color: #f0f0f0;
+    /* ホバーで少し暗く */
+    color: #555;
+}
+
+/* 7. 矢印アイコンのスタイル調整 (「<」「>」) */
+/* BootstrapはアイコンをHTMLエンティティやSVGで出力します。
+   色が変わらない場合は、開発者ツールで中身の要素（SVGやspan）のクラスを確認して、
+   その要素の色を #999 に設定してください。 */
+.page-link span[aria-hidden="true"] {
+    color: #999;
+}
+
+
+/* ----------------------------------------------------
+   Modal (モーダル) - 線なし・シンプルレイアウト
+   ---------------------------------------------------- */
+
+/* 1. モーダル全体のコンテナ (初期状態: 非表示) */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. モーダルが表示されたとき (URLの #ID と一致したとき) */
+.modal:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 3. モーダルの内容エリア */
+.modal-content {
+    background-color: #fff;
+    /* お手本画像に合わせてパディングを設定 */
+    padding: 40px 35px;
+    padding-top: 50px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 4. 閉じるボタン (xマーク) - 右上配置 */
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    text-decoration: none;
+    color: #333;
+    font-family: sans-serif;
+    line-height: 1;
+    z-index: 1010;
+}
+
+/* 5. 削除ボタンのフォーム (最下部中央配置) */
+.delete-form {
+    text-align: center;
+    /* 中央寄せ */
+    margin-top: 30px;
+    /* 項目リストとの間にスペース */
+    margin-bottom: 0;
+}
+
+.delete-button {
+    background-color: #e44d26;
+    color: white;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: normal;
+    box-shadow: none;
+    transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+    background-color: #cc4521;
+}
+
+
+/* 6. 詳細情報の構造 (.modal-row, .label, .value) */
+
+/* 各項目行（ID、お名前、性別など） */
+.modal-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    /* 項目名(180px)と値(残り)の2列構成は維持 */
+    margin-bottom: 0;
+    /* 横線を完全に削除 */
+    border-top: none;
+}
+
+/* 項目名（左側） */
+.modal-row .label {
+    /* 縦線を完全に削除 */
+    border-right: none;
+
+    /* 項目名と値の間に適度なスペースを空ける */
+    padding: 10px 15px 10px 0;
+    color: #333;
+    font-weight: normal;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+/* 値（右側） */
+.modal-row .value {
+    /* パディングを調整し、項目名と値の距離を確保 */
+    padding: 10px 0 10px 15px;
+    color: #333;
+    font-weight: normal;
+    white-space: pre-wrap;
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+}
+
+/* 複数行コンテンツは上揃えにする（お問い合わせ内容など） */
+.modal-row:last-child .value {
+    align-items: flex-start;
+}

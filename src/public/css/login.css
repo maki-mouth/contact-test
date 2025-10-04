@@ -1,0 +1,120 @@
+/* ------------------------------------- */
+/* 全体共通のスタイル (画像背景色とフォント) */
+/* ------------------------------------- */
+body {
+    /* 画像の薄いベージュ系の背景色 */
+    background-color: #f7f5f2;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* ------------------------------------- */
+/* 登録ページ固有のスタイル (.login-page-container) */
+/* ------------------------------------- */
+.login-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* ヘッダーの下にコンテンツを配置し、縦方向の余白を確保 */
+    padding-top: 50px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+}
+
+.page-title {
+    /* loginの文字のスタイル */
+    font-size: 28px;
+    font-weight: 300;
+    /* ロゴと同じく細めのフォント */
+    color: #555555;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+}
+
+.form-card {
+    /* フォーム全体を囲む白いカード部分 */
+    width: 90%;
+    max-width: 450px;
+    background-color: #fff;
+    padding: 40px 50px;
+    /* 画像に合わせてパディングを増やし、ゆとりを持たせる */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    /* 影をより自然に */
+    border-radius: 5px;
+}
+
+/* フォーム要素 */
+.login-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    /* ラベルと入力フィールドの間にゆとり */
+}
+
+.form-input {
+    /* 画像の薄いグレーのブロック形式の入力フィールドに変更 */
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #f6f6f6;
+    /* 薄いグレーの背景 */
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 3px;
+}
+
+.form-input:focus {
+    /* フォーカス時に背景色を少し変えるか、薄いボーダーを追加 */
+    background-color: #f0f0f0;
+}
+
+.form-input::placeholder {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* 登録ボタン */
+.form-actions {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.login-button {
+    /* 画像の茶色がかったボタンの色 */
+    background-color: #8b7d7b;
+    color: white;
+    padding: 10px 45px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.login-button:hover {
+    background-color: #6a5e5c;
+}
+
+.form__error {
+    height: 20px;
+    color: #ff0000;
+    text-align: left;
+    margin-top: 5px;
+    font-size: 12px;
+}

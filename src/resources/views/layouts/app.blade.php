@@ -13,6 +13,37 @@
 <body>
     <header class="header">
         <h1 class="header__logo">FashionablyLate</h1>
+        <nav>
+            <ul>
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/about">概要</a></li>
+                {{-- ログインボタンの例 --}}
+                @if (Auth::check())
+                    {{-- ログインしている場合のボタン（例: ユーザー名表示やログアウトボタン） --}}
+                    <li>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button type="submit">logout</button>
+                        </form>
+                    </li>
+                @else
+                    {{-- ログインしていない場合のボタン（例: ログイン・新規登録ボタン） --}}
+                    <li>
+                        <form action="/register" method="get">
+                            @csrf
+                            <button type="submit">register</button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="/login" method="get">
+                            @csrf
+                            <button type="submit">login</button>
+                        </form>
+                    </li>
+                @endif
+            </ul>
+        </nav>
+
     </header>
 
     <main class="main">

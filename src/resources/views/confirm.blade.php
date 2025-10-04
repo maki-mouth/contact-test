@@ -18,10 +18,10 @@
             <tr class="confirm-table__row">
             <th class="confirm-table__header">お名前</th>
             <td class="confirm-table__text">
-            <span class="confirm-value">{{ $contact->first_name . ' ' . $contact->last_name }}</span>
+            <span class="confirm-value">{{ $contact->last_name . ' ' . $contact->first_name }}</span>
             {{-- 分割されたhiddenフィールドを残す場合は以下のように記述 --}}
-            <input type="hidden" name="first_name" value="{{ $contact->first_name }}" />
             <input type="hidden" name="last_name" value="{{ $contact->last_name }}" />
+            <input type="hidden" name="first_name" value="{{ $contact->first_name }}" />
             </td>
             </tr>
             {{-- 2. 性別 --}}
@@ -71,7 +71,7 @@
             <td class="confirm-table__text">
             {{-- バリューではなく、表示用のテキストを表示 --}}
             <span class="confirm-value">{{ $contact->category->content }}</span>
-            <input type="hidden" name="category_id" value="{{ $contact->category_id }}" /> {{-- valueはIDを保持する想定 --}}
+            <input type="hidden" name="category_id" value="{{ $contact->category_id }}" />
             </td>
             </tr>
             {{-- 8. お問い合わせ内容 --}}
