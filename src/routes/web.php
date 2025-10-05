@@ -14,13 +14,11 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', [ContactController::class, 'index'])->name('contact.index');       // フォーム初期表示
-Route::post('/confirm', [ContactController::class, 'confirm'])->name('contact.confirm'); // 確認画面（セッション保存）
-Route::post('/thanks', [ContactController::class, 'send'])->name('contact.send'); // 最終送信・保存
-Route::get('/thanks', [ContactController::class, 'thanks'])->name('contact.thanks'); // (リダイレクト用。または send() がビューを直接返す場合は不要)
-
+Route::get('/', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
+Route::post('/thanks', [ContactController::class, 'send'])->name('contact.send');
+Route::get('/thanks', [ContactController::class, 'thanks'])->name('contact.thanks');
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [ContactController::class, 'admin'])->name('admin');
 });
-
 Route::delete('/admin/contact/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');

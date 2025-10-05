@@ -13,11 +13,9 @@
 <body>
     <header class="header">
         <h1 class="header__logo">FashionablyLate</h1>
+        @if (!Request::is('/') && !Request::is('confirm'))
         <nav>
             <ul>
-                <li><a href="/">ホーム</a></li>
-                <li><a href="/about">概要</a></li>
-                {{-- ログインボタンの例 --}}
                 @if (Auth::check())
                     {{-- ログインしている場合のボタン（例: ユーザー名表示やログアウトボタン） --}}
                     <li>
@@ -29,20 +27,25 @@
                 @else
                     {{-- ログインしていない場合のボタン（例: ログイン・新規登録ボタン） --}}
                     <li>
+                        @if (!Request::is('register'))
                         <form action="/register" method="get">
                             @csrf
                             <button type="submit">register</button>
                         </form>
+                        @endif
                     </li>
                     <li>
+                        @if (!Request::is('login'))
                         <form action="/login" method="get">
                             @csrf
                             <button type="submit">login</button>
                         </form>
+                        @endif
                     </li>
                 @endif
             </ul>
         </nav>
+        @endif
 
     </header>
 

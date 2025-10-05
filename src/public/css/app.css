@@ -9,15 +9,42 @@ body {
 
 /* ヘッダー */
 .header {
-    text-align: center;
-    padding: 20px 0;
+    display: flex;
+        /* 要素間のスペースを均等に分散（左右端と要素間のスペースを空ける）*/
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    /* 左右の余白 */
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .header__logo {
+    margin: 0 auto;
     font-size: 28px;
     font-weight: normal;
     color: #97887d
 }
 
+.header nav {
+    /* ログアウトボタンを右端に固定するために、配置場所を調整 */
+    position: absolute;
+    right: 20px;
+    /* 右端からの距離 */
+}
+
+.header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    background-color: transparent;
+    border: 1px solid #8d7a72;
+    /* 細い枠線 */
+    color: #8d7a72;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}

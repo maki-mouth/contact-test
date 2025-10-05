@@ -9,7 +9,8 @@
     <div class="contact-form__heading">
         <h2>Contact</h2>
     </div>
-    <form class="form" method="POST" action="/confirm">
+
+    <form class="form" method="POST" action="/confirm" novalidate>
         @csrf
         <div class="form__group">
             <div class="form__group-title">
@@ -77,9 +78,9 @@
             <div class="form__group-content">
                 <input type="email" name="email" placeholder="例：test@example.com" value="{{ old('email') }}" />
                 <div class="form__error">
-                    @error('email')
-                        {{ $message }}
-                    @enderror
+                @if ($errors->has('email'))
+                    {{ $errors->first('email') }}
+                @endif
                 </div>
             </div>
         </div>
@@ -100,11 +101,18 @@
                     {{-- 3つ目の入力欄 (例: 5678) --}}
                     <input type="text" name="phone_part3" maxlength="4" class="phone-input" placeholder="5678" value="{{ old('phone_part3') }}" >
                 </div>
-            </div>
-            <div class="form_error">
-                @if ($errors->has('phone_part1') || $errors->has('phone_part2') || $errors->has('phone_part3'))
-                    電話番号の形式が正しくありません。
-                @endif
+                <div class="form__error">
+                    {{-- phone_part1, 2, 3 のいずれかにエラーがあるかチェック --}}
+                    @if ($errors->has('phone_part1') || $errors->has('phone_part2') || $errors->has('phone_part3'))
+                        @if ($errors->has('phone_part1'))
+                            {{ $errors->first('phone_part1') }}
+                        @elseif ($errors->has('phone_part2'))
+                            {{ $errors->first('phone_part2') }}
+                        @elseif ($errors->has('phone_part3'))
+                            {{ $errors->first('phone_part3') }}
+                        @endif
+                    @endif
+                </div>
             </div>
         </div>
 

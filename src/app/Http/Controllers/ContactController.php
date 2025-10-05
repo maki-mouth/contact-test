@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Category;
-use App\Models\User;
 use App\Http\Requests\ContactRequest;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Session;
 
 
 class ContactController extends Controller
@@ -29,17 +29,34 @@ class ContactController extends Controller
 
     public function confirm(ContactRequest $request)
     {
+        // 1. バリデーションが成功したデータを取得
         $contactData = $request->validated();
-        Session::put('contact_data', $contactData);
 
-        $contact = new Contact($contactData);
+        // 2. 電話番号の3つのパートを結合し、新しいキー 'tel' を作成
+        //    （ハイフンなしで結合します）
+        $combined_tel = $contactData['phone_part1'] . 
+                        $contactData['phone_part2'] . 
+                        $contactData['phone_part3'];
+
+        // 3. 結合した 'tel' をデータ配列に追加
+        $contactData['tel'] = $combined_tel;
+
+        // 4. 不要になった3つのパートをデータ配列から削除（オプション）
+        // unset($contactData['phone_part1']);
+        // unset($contactData['phone_part2']);
+        // unset($contactData['phone_part3']);
+
+
+        // 5. 結合済みのデータをセッションに一時保存
+        Session::put('contact_data', $contactData);
+        
+        // ... (確認画面の表示へ)
 
         return view('confirm', [
-            'contact' => $contact,
+            'contact' => new Contact($contactData), // 結合済みデータを使用
             'genderMap' => self::GENDER_MAP,
         ]);
     }
-
     public function send()
     {
         $contactData = Session::get('contact_data');
@@ -48,12 +65,12 @@ class ContactController extends Controller
             return redirect()->route('contact.index');
         }
 
+        // セッションデータには、すでに結合された 'tel' が含まれているため、そのまま保存
         Contact::create($contactData);
         Session::forget('contact_data');
 
         return view('thanks');
     }
-
     public function admin(Request $request)
     {
         // 1. 基本クエリの開始（N+1問題回避のためCategoryリレーションをEager Load）
@@ -111,10 +128,6 @@ class ContactController extends Controller
     {
         $contact->delete();
 
-        // 削除後に元のページ状態を維持して admin ルートに戻る
-        $queryString = request()->headers->get('referer') ? parse_url(request()->headers->get('referer'), PHP_URL_QUERY) : '';
-        parse_str($queryString, $queryParams);
-
-        return redirect()->route('admin', $queryParams);
+        return back();
     }
 }
